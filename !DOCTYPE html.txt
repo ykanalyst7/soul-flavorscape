@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Soul Flavorscape of India | Authentic Indian Dining in Raleigh, NC</title>
+  <meta name="description" content="An immersive dining experience blending authentic North Indian regional dishes. Punjabi and Delhi-style cuisine in Raleigh, NC. Fresh ingredients, no artificial colors." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Great+Vibes&family=Cinzel:wght@400;500&family=Lato:wght@300;400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --teal-dark: #0e3a38; --teal-mid: #1a5c54; --teal-light: #2a7a6e;
+      --brown-warm: #5a3620; --brown-mid: #7a4a28;
+      --gold: #c9a84c; --gold-light: #e2c47a; --gold-pale: #f0dda0;
+      --cream: #fdf6e8; --white: #fffdf6;
+      --text-light: rgba(255,255,255,0.85); --text-muted: rgba(255,255,255,0.55);
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Lato', sans-serif; font-weight: 300; background: var(--teal-dark); color: var(--text-light); line-height: 1.75; overflow-x: hidden; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 3rem; height: 80px;
+      background: rgba(14,58,56,0.82); backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(201,168,76,0.18); transition: background 0.3s;
+    }
+    nav.scrolled { background: rgba(10,42,40,0.97); }
+    .nav-logo-wrap { display: flex; flex-direction: column; align-items: flex-start; text-decoration: none; }
+    .nav-logo-script { font-family: 'Great Vibes', cursive; font-size: 2rem; color: white; line-height: 1; }
+    .nav-logo-sub { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.22em; color: var(--gold-light); text-transform: uppercase; margin-top: -2px; }
+    .nav-links { display: flex; gap: 2.2rem; list-style: none; align-items: center; }
+    .nav-links a { font-family: 'Cinzel', serif; font-size: 0.72rem; letter-spacing: 0.12em; color: rgba(255,255,255,0.78); text-decoration: none; transition: color 0.2s; position: relative; padding-bottom: 2px; }
+    .nav-links a::after { content: ''; position: absolute; bottom: -2px; left: 0; right: 0; height: 1px; background: var(--gold); transform: scaleX(0); transform-origin: center; transition: transform 0.25s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--gold-light); }
+    .nav-links a:hover::after, .nav-links a.active::after { transform: scaleX(1); }
+    .nav-order-btn { font-family: 'Cinzel', serif !important; font-size: 0.75rem !important; letter-spacing: 0.12em !important; background: var(--gold) !important; color: var(--teal-dark) !important; font-weight: 600 !important; padding: 0.6rem 1.6rem !important; border-radius: 30px !important; transition: background 0.2s !important; }
+    .nav-order-btn:hover { background: var(--gold-light) !important; }
+    .nav-order-btn::after { display: none !important; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+    .hamburger span { display: block; width: 22px; height: 1.5px; background: white; transition: 0.3s; }
+    .mobile-menu { display: none; position: fixed; top: 80px; left: 0; right: 0; background: rgba(10,42,40,0.98); padding: 1.5rem 3rem; z-index: 199; border-bottom: 1px solid rgba(201,168,76,0.2); }
+    .mobile-menu.open { display: block; }
+    .mobile-menu a { display: block; color: rgba(255,255,255,0.8); text-decoration: none; font-family: 'Cinzel', serif; font-size: 0.82rem; letter-spacing: 0.1em; padding: 0.85rem 0; border-bottom: 1px solid rgba(255,255,255,0.07); }
+
+    /* SHARED */
+    section { padding: 6rem 3rem; }
+    .container { max-width: 1200px; margin: 0 auto; }
+    .eyebrow { font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); display: block; margin-bottom: 0.75rem; }
+    .serif-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 300; color: white; line-height: 1.25; }
+    .serif-title em { font-style: italic; color: var(--gold-light); }
+    .body-text { font-size: 0.95rem; color: var(--text-muted); line-height: 1.9; font-weight: 300; }
+    .body-text strong { color: var(--gold-light); font-weight: 400; }
+    .gold-line { width: 48px; height: 1px; background: var(--gold); margin: 1.25rem 0 1.75rem; }
+    .gold-rule { display: flex; align-items: center; gap: 1rem; margin: 0 0 2.5rem; color: var(--gold); }
+    .gold-rule::before, .gold-rule::after { content: ''; flex: 1; height: 1px; background: var(--gold); opacity: 0.35; }
+    .gold-rule span { font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.3em; white-space: nowrap; text-transform: uppercase; }
+
+    /* HERO */
+    #home {
+      min-height: 100vh; display: flex; align-items: center; padding-top: 80px;
+      position: relative; overflow: hidden;
+      background: radial-gradient(ellipse at 30% 0%, rgba(42,122,110,0.55) 0%, transparent 55%),
+                  radial-gradient(ellipse at 100% 65%, rgba(90,54,32,0.75) 0%, transparent 60%),
+                  radial-gradient(ellipse at 0% 100%, rgba(26,92,84,0.4) 0%, transparent 50%),
+                  linear-gradient(155deg, #0e3a38 0%, #1a5c54 38%, #5a3620 100%);
+    }
+    .hero-inner { position: relative; z-index: 2; max-width: 1200px; margin: 0 auto; width: 100%; padding: 5vw 3rem; text-align: center; }
+    .hero-address { font-family: 'Cinzel', serif; font-size: 0.72rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold-light); opacity: 0.8; margin-bottom: 2.5rem; animation: fadeDown 0.8s ease both; }
+    .hero-soul { font-family: 'Great Vibes', cursive; font-size: clamp(8rem, 18vw, 16rem); color: white; line-height: 0.85; display: block; animation: fadeUp 0.9s 0.1s ease both; }
+    .hero-subtitle { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.5rem, 3vw, 2.4rem); font-style: italic; font-weight: 300; color: white; letter-spacing: 0.05em; margin-top: -0.5rem; animation: fadeUp 0.9s 0.2s ease both; }
+    .hero-tagline { display: flex; align-items: center; justify-content: center; gap: 1.5rem; margin: 1.75rem auto; font-family: 'Cinzel', serif; font-size: 0.68rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); animation: fadeUp 0.9s 0.3s ease both; }
+    .hero-tagline::before, .hero-tagline::after { content: ''; width: 60px; height: 1px; background: var(--gold); opacity: 0.5; }
+    .hero-desc { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.05rem, 2vw, 1.25rem); color: rgba(255,255,255,0.72); max-width: 640px; margin: 0 auto 2.5rem; line-height: 1.85; font-weight: 300; animation: fadeUp 0.9s 0.4s ease both; }
+    .hero-btns { display: flex; gap: 1.25rem; justify-content: center; flex-wrap: wrap; animation: fadeUp 0.9s 0.5s ease both; }
+    .btn-gold { font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; background: var(--gold); color: var(--teal-dark); padding: 0.85rem 2.5rem; border-radius: 30px; text-decoration: none; font-weight: 600; transition: background 0.2s, transform 0.2s; display: inline-block; }
+    .btn-gold:hover { background: var(--gold-light); transform: translateY(-2px); }
+    .btn-ghost { font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; border: 1px solid rgba(201,168,76,0.5); color: var(--gold-light); padding: 0.85rem 2.5rem; border-radius: 30px; text-decoration: none; transition: border-color 0.2s, color 0.2s, transform 0.2s; display: inline-block; }
+    .btn-ghost:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+
+    /* WHY */
+    #why { background: radial-gradient(ellipse at 80% 0%, rgba(42,122,110,0.3) 0%, transparent 60%), linear-gradient(180deg, #0c3432 0%, #0e3a38 100%); border-top: 1px solid rgba(201,168,76,0.12); border-bottom: 1px solid rgba(201,168,76,0.12); }
+    .why-intro { text-align: center; max-width: 600px; margin: 0 auto 3rem; }
+    .why-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.5rem; }
+    .why-card { border: 1px solid rgba(201,168,76,0.18); padding: 2rem 1.25rem; border-radius: 4px; text-align: center; background: rgba(255,255,255,0.03); transition: border-color 0.25s, background 0.25s, transform 0.25s; }
+    .why-card:hover { border-color: rgba(201,168,76,0.5); background: rgba(201,168,76,0.06); transform: translateY(-4px); }
+    .why-icon { font-size: 1.8rem; margin-bottom: 0.85rem; }
+    .why-card h4 { font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-weight: 400; color: var(--gold-light); margin-bottom: 0.4rem; line-height: 1.3; }
+    .why-card p { font-size: 0.78rem; color: var(--text-muted); line-height: 1.7; }
+
+    /* EXPERIENCES */
+    #experiences { background: linear-gradient(160deg, #0e3a38 0%, #133028 50%, #1a4038 100%); }
+    .exp-header { text-align: center; max-width: 640px; margin: 0 auto 4rem; }
+    .exp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+    .exp-card { background: rgba(255,255,255,0.035); border: 1px solid rgba(201,168,76,0.2); border-top: 3px solid var(--gold); padding: 2.5rem 2rem 2rem; border-radius: 4px; transition: background 0.25s, transform 0.25s, box-shadow 0.25s; }
+    .exp-card:hover { background: rgba(255,255,255,0.06); transform: translateY(-5px); box-shadow: 0 20px 50px rgba(0,0,0,0.25); }
+    .exp-tag { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.4rem; display: block; }
+    .exp-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 400; color: white; margin-bottom: 0.75rem; }
+    .exp-card > p { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem; line-height: 1.8; }
+    .exp-dish-list { list-style: none; border-top: 1px solid rgba(255,255,255,0.07); padding-top: 1rem; }
+    .exp-dish-list li { font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-style: italic; color: rgba(255,255,255,0.65); padding: 0.35rem 0; border-bottom: 1px solid rgba(255,255,255,0.05); display: flex; align-items: center; gap: 0.6rem; }
+    .exp-dish-list li::before { content: '✦'; color: var(--gold); font-size: 0.55rem; font-style: normal; }
+    .exp-cta { display: inline-block; margin-top: 1.5rem; font-family: 'Cinzel', serif; font-size: 0.68rem; letter-spacing: 0.15em; color: var(--gold); text-decoration: none; border-bottom: 1px solid rgba(201,168,76,0.35); transition: color 0.2s, border-color 0.2s; }
+    .exp-cta:hover { color: var(--gold-light); border-color: var(--gold); }
+
+    /* STORY */
+    #story { background: radial-gradient(ellipse at 20% 50%, rgba(26,92,84,0.4) 0%, transparent 55%), radial-gradient(ellipse at 80% 50%, rgba(90,54,32,0.45) 0%, transparent 55%), linear-gradient(160deg, #0c3432 0%, #1a3028 50%, #3a2010 100%); border-top: 1px solid rgba(201,168,76,0.1); }
+    .story-layout { display: grid; grid-template-columns: 1fr 1.1fr; gap: 5rem; align-items: center; }
+    .story-quote { margin: 2rem 0; padding: 1.5rem 2rem; border-left: 2px solid var(--gold); background: rgba(201,168,76,0.06); }
+    .story-quote p { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-style: italic; font-weight: 300; color: var(--gold-light); line-height: 1.7; }
+    .story-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+    .stat-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(201,168,76,0.2); padding: 2rem 1.5rem; border-radius: 4px; text-align: center; transition: background 0.25s; }
+    .stat-card:hover { background: rgba(201,168,76,0.07); }
+    .stat-num { font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 300; color: var(--gold); display: block; line-height: 1; }
+    .stat-label { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); margin-top: 0.5rem; display: block; }
+
+    /* MENU PAGES */
+    .menu-page { border-top: 1px solid rgba(201,168,76,0.1); }
+    #punjab { background: linear-gradient(160deg, #0e3a38 0%, #133028 100%); }
+    #delhi { background: linear-gradient(160deg, #0c3028 0%, #1a3820 50%, #0e3a38 100%); }
+    .menu-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+    .menu-layout.reverse { direction: rtl; }
+    .menu-layout.reverse > * { direction: ltr; }
+    .dish-card { padding: 1.25rem 1.5rem; background: rgba(255,255,255,0.035); border: 1px solid rgba(201,168,76,0.14); border-left: 2px solid var(--gold); border-radius: 3px; margin-bottom: 1rem; transition: background 0.2s; }
+    .dish-card:hover { background: rgba(201,168,76,0.07); }
+    .dish-card h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 400; color: white; margin-bottom: 0.2rem; }
+    .dish-card p { font-size: 0.82rem; color: var(--text-muted); }
+    .promise-list { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; margin-top: 1.5rem; }
+    .promise-list li { display: flex; align-items: center; gap: 0.85rem; font-size: 0.88rem; color: rgba(255,255,255,0.72); }
+    .promise-list li::before { content: '✦'; color: var(--gold); font-size: 0.6rem; width: 20px; flex-shrink: 0; text-align: center; }
+    .tags-wrap { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.25rem; }
+    .tag { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; border: 1px solid rgba(201,168,76,0.35); color: var(--gold-light); padding: 0.35rem 0.9rem; border-radius: 20px; transition: background 0.2s; }
+    .tag:hover { background: rgba(201,168,76,0.1); }
+
+    /* CUSTOM */
+    #custom { background: radial-gradient(ellipse at 70% 30%, rgba(90,54,32,0.4) 0%, transparent 55%), linear-gradient(160deg, #0c3028 0%, #1a3820 50%, #3a2010 100%); border-top: 1px solid rgba(201,168,76,0.1); }
+    .customize-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1.25rem; margin-top: 2rem; }
+    .cust-option { background: rgba(255,255,255,0.04); border: 1px solid rgba(201,168,76,0.18); padding: 1.5rem; border-radius: 4px; text-align: center; transition: background 0.2s, border-color 0.2s; }
+    .cust-option:hover { background: rgba(201,168,76,0.08); border-color: rgba(201,168,76,0.4); }
+    .cust-icon { font-size: 1.75rem; margin-bottom: 0.6rem; }
+    .cust-option h4 { font-family: 'Cormorant Garamond',serif; font-size:1rem; font-weight:400; color:white; margin-bottom:0.2rem; }
+    .cust-option p { font-size: 0.78rem; color: var(--text-muted); }
+
+    /* ORDER */
+    #order { background: radial-gradient(ellipse at 50% 0%, rgba(201,168,76,0.18) 0%, transparent 55%), linear-gradient(180deg, #0a2a28 0%, #0e3a38 100%); border-top: 1px solid rgba(201,168,76,0.15); text-align: center; }
+    .order-options { display: grid; grid-template-columns: repeat(4,1fr); gap: 1.5rem; margin: 2.5rem 0; }
+    .order-opt { background: rgba(255,255,255,0.04); border: 1px solid rgba(201,168,76,0.18); padding: 1.75rem 1rem; border-radius: 4px; transition: background 0.2s, transform 0.2s; }
+    .order-opt:hover { background: rgba(201,168,76,0.08); transform: translateY(-3px); }
+    .order-opt-icon { font-size: 2rem; margin-bottom: 0.6rem; }
+    .order-opt p { font-family: 'Cinzel',serif; font-size: 0.72rem; letter-spacing: 0.1em; color: rgba(255,255,255,0.7); }
+    .payment-row { display: flex; justify-content: center; gap: 0.85rem; flex-wrap: wrap; margin: 1.25rem 0 2.5rem; }
+    .pay-badge { border: 1px solid rgba(201,168,76,0.3); padding: 0.35rem 1rem; border-radius: 20px; font-size: 0.78rem; color: rgba(255,255,255,0.6); }
+
+    /* BLOG */
+    #blog { background: linear-gradient(160deg, #0e3a38 0%, #0c3028 100%); border-top: 1px solid rgba(201,168,76,0.1); }
+    .blog-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.75rem; margin-top: 3rem; }
+    .blog-card { border: 1px solid rgba(201,168,76,0.15); border-radius: 4px; overflow: hidden; background: rgba(255,255,255,0.03); transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s; }
+    .blog-card:hover { border-color: rgba(201,168,76,0.4); transform: translateY(-3px); box-shadow: 0 15px 40px rgba(0,0,0,0.25); }
+    .blog-thumb { height: 150px; background: linear-gradient(135deg, rgba(42,122,110,0.5), rgba(90,54,32,0.6)); display: flex; align-items: center; justify-content: center; font-size: 2.5rem; border-bottom: 1px solid rgba(201,168,76,0.1); }
+    .blog-body { padding: 1.4rem; }
+    .blog-cat { font-family: 'Cinzel',serif; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); }
+    .blog-body h4 { font-family: 'Cormorant Garamond',serif; font-size: 1.05rem; font-weight: 400; color: white; margin: 0.4rem 0; line-height: 1.4; }
+    .blog-link { font-size: 0.78rem; color: var(--gold); text-decoration: none; border-bottom: 1px solid rgba(201,168,76,0.3); transition: color 0.2s; }
+    .blog-link:hover { color: var(--gold-light); }
+
+    /* CONTACT */
+    #contact { background: radial-gradient(ellipse at 30% 70%, rgba(90,54,32,0.45) 0%, transparent 55%), linear-gradient(160deg, #0a2a28 0%, #1a3020 50%, #2a1a08 100%); border-top: 1px solid rgba(201,168,76,0.12); }
+    .contact-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; margin-top: 3rem; }
+    .contact-row { display: flex; gap: 1.25rem; align-items: flex-start; margin-bottom: 1.75rem; }
+    .contact-icon-wrap { width: 46px; height: 46px; border-radius: 50%; border: 1px solid rgba(201,168,76,0.3); background: rgba(201,168,76,0.08); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; }
+    .contact-label { font-family: 'Cinzel',serif; font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.2rem; }
+    .contact-val { color: rgba(255,255,255,0.7); font-size: 0.95rem; }
+    .contact-val a { color: rgba(255,255,255,0.7); text-decoration: none; transition: color 0.2s; }
+    .contact-val a:hover { color: var(--gold-light); }
+    .hours-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.1rem; margin-top: 1.5rem; }
+    .hour-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(201,168,76,0.18); padding: 1.5rem 1rem; border-radius: 4px; text-align: center; }
+    .hour-card-icon { font-size: 1.4rem; margin-bottom: 0.5rem; }
+    .hour-card h4 { font-family: 'Cormorant Garamond',serif; font-size: 1rem; font-weight: 400; color: var(--gold-light); margin-bottom: 0.2rem; }
+    .hour-card p { font-size: 0.77rem; color: var(--text-muted); }
+
+    /* FOOTER */
+    footer { background: #060f0e; padding: 2.5rem 3rem; text-align: center; border-top: 1px solid rgba(201,168,76,0.15); }
+    .footer-logo { font-family: 'Great Vibes',cursive; font-size: 2rem; color: white; margin-bottom: 0.3rem; }
+    .footer-sub { font-family: 'Cinzel',serif; font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 1.25rem; }
+    .footer-links { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-bottom: 1rem; }
+    .footer-links a { font-family: 'Cinzel',serif; font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--gold); }
+    footer p { font-size: 0.75rem; color: rgba(255,255,255,0.22); }
+
+    /* RESPONSIVE */
+    @media (max-width: 960px) {
+      nav { padding: 0 1.5rem; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      section { padding: 4rem 1.5rem; }
+      .story-layout, .menu-layout, .contact-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+      .menu-layout.reverse { direction: ltr; }
+      .exp-grid, .blog-grid { grid-template-columns: 1fr 1fr; }
+      .why-grid, .order-options { grid-template-columns: repeat(2,1fr); }
+    }
+    @media (max-width: 580px) {
+      section { padding: 3.5rem 1.25rem; }
+      .exp-grid, .blog-grid, .why-grid, .order-options, .customize-grid { grid-template-columns: 1fr; }
+      .hours-grid { grid-template-columns: 1fr; }
+      .hero-soul { font-size: clamp(5rem, 22vw, 8rem); }
+    }
+
+    @keyframes fadeUp   { from { opacity:0; transform:translateY(28px); } to { opacity:1; transform:none; } }
+    @keyframes fadeDown { from { opacity:0; transform:translateY(-16px); } to { opacity:1; transform:none; } }
+    .reveal { opacity:0; transform:translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity:1; transform:none; }
+  </style>
+</head>
+<body>
+
+<nav id="navbar">
+  <a href="#home" class="nav-logo-wrap">
+    <span class="nav-logo-script">Soul</span>
+    <span class="nav-logo-sub">Flavorscape of India</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#home" class="active">Home</a></li>
+    <li><a href="#punjab">Taste of Punjab</a></li>
+    <li><a href="#delhi">Taste of Delhi</a></li>
+    <li><a href="#custom">Home Food</a></li>
+    <li><a href="#story">About Us</a></li>
+    <li><a href="#order" class="nav-order-btn">Order Now →</a></li>
+  </ul>
+  <button class="hamburger" onclick="document.querySelector('.mobile-menu').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu">
+  <a href="#home"    onclick="this.closest('.mobile-menu').classList.remove('open')">Home</a>
+  <a href="#punjab"  onclick="this.closest('.mobile-menu').classList.remove('open')">Taste of Punjab</a>
+  <a href="#delhi"   onclick="this.closest('.mobile-menu').classList.remove('open')">Taste of Delhi</a>
+  <a href="#custom"  onclick="this.closest('.mobile-menu').classList.remove('open')">Home Food</a>
+  <a href="#story"   onclick="this.closest('.mobile-menu').classList.remove('open')">About Us</a>
+  <a href="#blog"    onclick="this.closest('.mobile-menu').classList.remove('open')">Blog</a>
+  <a href="#contact" onclick="this.closest('.mobile-menu').classList.remove('open')">Contact</a>
+  <a href="#order"   onclick="this.closest('.mobile-menu').classList.remove('open')" style="color:var(--gold);">Order Now →</a>
+</div>
+
+<!-- HOME -->
+<section id="home">
+  <div class="hero-inner">
+    <p class="hero-address">301 Glenwood Ave, Raleigh NC</p>
+    <span class="hero-soul">Soul</span>
+    <p class="hero-subtitle">Flavorscape of India</p>
+    <div class="hero-tagline"><span>Savor the Soul, Taste the Tradition</span></div>
+    <p class="hero-desc">An immersive dining experience blending authentic North Indian regional dishes with handcrafted recipes, fresh ingredients, and flavors passed down through generations.</p>
+    <div class="hero-btns">
+      <a href="#order" class="btn-gold">Order Online</a>
+      <a href="#experiences" class="btn-ghost">Explore Our Menu</a>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section id="why">
+  <div class="container">
+    <div class="why-intro reveal">
+      <span class="eyebrow">Why Choose Us</span>
+      <h2 class="serif-title">Why Guests Love <em>Soul Flavorscape</em></h2>
+      <div class="gold-line" style="margin:1.25rem auto 1.25rem;"></div>
+      <p class="body-text">At Soul Flavorscape of India, food is more than a meal — it is a story of tradition, family recipes, and authentic flavors.</p>
+    </div>
+    <div class="why-grid reveal">
+      <div class="why-card"><div class="why-icon">🫓</div><h4>Punjabi &amp; Delhi-style Cuisine</h4><p>Homemade recipes rooted in North India's finest kitchen traditions.</p></div>
+      <div class="why-card"><div class="why-icon">🥬</div><h4>Fresh Ingredients Daily</h4><p>No frozen food — ever. Every dish is started from scratch, every day.</p></div>
+      <div class="why-card"><div class="why-icon">✨</div><h4>No Artificial Colors</h4><p>Pure, natural color from real Indian spices and ingredients.</p></div>
+      <div class="why-card"><div class="why-icon">🌶️</div><h4>Authentic Spices</h4><p>Traditional cooking methods with handpicked, genuine Indian spices.</p></div>
+      <div class="why-card"><div class="why-icon">🎛️</div><h4>Customize Your Food</h4><p>Tell us exactly how you like it — your taste, your spice, your way.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCES -->
+<section id="experiences">
+  <div class="container">
+    <div class="exp-header reveal">
+      <span class="eyebrow">Our Signature Experiences</span>
+      <h2 class="serif-title">Three Journeys into <em>Authentic Indian Flavor</em></h2>
+    </div>
+    <div class="exp-grid reveal">
+      <div class="exp-card">
+        <span class="exp-tag">North India</span>
+        <h3>Taste of Punjab</h3>
+        <p>Rich, creamy, and deeply flavorful dishes inspired by the heart of North India's culinary heritage.</p>
+        <ul class="exp-dish-list">
+          <li>Butter Chicken</li><li>Paneer Tikka</li><li>Punjabi Thali</li><li>Garlic Naan</li>
+        </ul>
+        <a href="#punjab" class="exp-cta">Explore Punjab →</a>
+      </div>
+      <div class="exp-card">
+        <span class="exp-tag">India's Food Capital</span>
+        <h3>Taste of Delhi</h3>
+        <p>Street-style flavors from the vibrant food culture of India's most iconic culinary city.</p>
+        <ul class="exp-dish-list">
+          <li>Delhi Paratha</li><li>Chole Bhature</li><li>Tandoori Specialties</li><li>Sizzling Platters</li>
+        </ul>
+        <a href="#delhi" class="exp-cta">Explore Delhi →</a>
+      </div>
+      <div class="exp-card">
+        <span class="exp-tag">Personalized</span>
+        <h3>Custom Home Food</h3>
+        <p>Food made exactly the way you like it — fully customized, just like a family kitchen.</p>
+        <ul class="exp-dish-list">
+          <li>Customize Spice Levels</li><li>Special Dietary Requests</li><li>Traditional Home Recipes</li><li>Vegetarian &amp; Vegan Options</li>
+        </ul>
+        <a href="#custom" class="exp-cta">Customize Yours →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STORY / ABOUT US -->
+<section id="story">
+  <div class="container">
+    <div class="story-layout">
+      <div class="reveal">
+        <span class="eyebrow">About Us</span>
+        <h2 class="serif-title">The Story Behind <em>Our Kitchen</em></h2>
+        <div class="gold-line"></div>
+        <p class="body-text">Behind every dish at Soul Flavorscape of India is a story of passion, tradition, and years of dedication to authentic Indian cooking. Our kitchen is inspired by family recipes passed down through generations — where food was always prepared with care, patience, and love.</p>
+        <div class="story-quote">
+          <p>"Real Indian food should never lose its soul. That means cooking fresh every day, using authentic spices, and staying true to the original taste."</p>
+        </div>
+        <p class="body-text">The heart of our flavors comes from traditional home kitchens, where recipes were taught by parents and perfected over years of experience. With more than 15 years of culinary journey, our chef stays true to the original taste of Punjabi and Delhi cuisine — <strong>no artificial food colors, no frozen shortcuts, just genuine flavors made from scratch.</strong></p>
+        <p class="body-text" style="margin-top:1.25rem;">We also believe food should be personal. Guests can customize their meals to match their taste, making every dining experience feel just like home-cooked food made with heart.</p>
+      </div>
+      <div class="story-stats reveal">
+        <div class="stat-card"><span class="stat-num">15<span style="font-size:1.5rem">+</span></span><span class="stat-label">Years of Culinary Journey</span></div>
+        <div class="stat-card"><span class="stat-num">0</span><span class="stat-label">Artificial Colors Used</span></div>
+        <div class="stat-card"><span class="stat-num">100<span style="font-size:1.5rem">%</span></span><span class="stat-label">Fresh Ingredients Daily</span></div>
+        <div class="stat-card"><span class="stat-num">∞</span><span class="stat-label">Customization Options</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TASTE OF PUNJAB -->
+<section id="punjab" class="menu-page">
+  <div class="container">
+    <div class="menu-layout">
+      <div class="reveal">
+        <span class="eyebrow">Taste of Punjab</span>
+        <h2 class="serif-title">Experience the Rich Flavors of <em>North India</em></h2>
+        <div class="gold-line"></div>
+        <p class="body-text">Punjabi cuisine is known for its bold flavors, comforting dishes, and rich culinary traditions celebrated for generations. At Soul Flavorscape, our Taste of Punjab brings the authentic flavors of North India to Raleigh — made with slow-cooked gravies, freshly ground spices, and time-honored cooking techniques. Every dish is designed to deliver warmth, comfort, and the true taste of home.</p>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;color:var(--gold-light);margin:2rem 0 0.5rem;">Our Punjabi Promise</h3>
+        <ul class="promise-list">
+          <li>No artificial food colors</li><li>No frozen ingredients</li>
+          <li>Fresh ingredients sourced daily</li><li>Authentic Indian spices</li>
+          <li>Traditional cooking techniques</li><li>Cooked fresh for every order</li>
+        </ul>
+        <div style="margin-top:2rem;">
+          <p style="font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:0.75rem;">Perfect For</p>
+          <div class="tags-wrap">
+            <span class="tag">Family Dinners</span><span class="tag">Comfort Food Lovers</span>
+            <span class="tag">Traditional Indian Cuisine</span><span class="tag">Authentic Indian Food Near Me</span>
+          </div>
+        </div>
+      </div>
+      <div class="reveal">
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:300;color:white;margin-bottom:1.5rem;">Signature Punjabi Dishes</h3>
+        <div class="dish-card"><h4>Butter Chicken</h4><p>Creamy tomato-based curry with tender, marinated chicken.</p></div>
+        <div class="dish-card"><h4>Paneer Butter Masala</h4><p>Rich and velvety paneer curry made with aromatic spices.</p></div>
+        <div class="dish-card"><h4>Dal Makhani</h4><p>Slow-cooked black lentils prepared using a traditional Punjabi recipe.</p></div>
+        <div class="dish-card"><h4>Amritsari Kulcha</h4><p>Stuffed bread baked to perfection in a traditional tandoor oven.</p></div>
+        <div class="dish-card"><h4>Tandoori Chicken</h4><p>Authentic clay oven roasted chicken with deep, smoky flavor.</p></div>
+        <div style="margin-top:1.75rem;"><a href="#order" class="btn-gold" style="font-size:0.72rem;padding:0.75rem 1.75rem;">Order Punjabi Food</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TASTE OF DELHI -->
+<section id="delhi" class="menu-page">
+  <div class="container">
+    <div class="menu-layout reverse">
+      <div class="reveal">
+        <span class="eyebrow">Taste of Delhi</span>
+        <h2 class="serif-title">Discover the Vibrant Food Culture of <em>India's Capital</em></h2>
+        <div class="gold-line"></div>
+        <p class="body-text">Delhi is often called the food capital of India, known for its vibrant street food culture and iconic flavors loved across the country. At Soul Flavorscape, we celebrate the lively food culture of the city — bringing authentic street-style dishes and tandoori specialties to Raleigh. Every plate brings the lively spirit of Delhi's famous food streets right to your table.</p>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;color:var(--gold-light);margin:2rem 0 0.5rem;">The Delhi Food Experience</h3>
+        <ul class="promise-list">
+          <li>Sizzling platters full of bold flavor</li><li>Freshly prepared street-style dishes</li>
+          <li>Authentic tandoori cooking</li><li>Fresh ingredients every time</li>
+        </ul>
+        <div style="margin-top:2rem;">
+          <p style="font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:0.75rem;">Perfect For</p>
+          <div class="tags-wrap">
+            <span class="tag">Food Explorers</span><span class="tag">Street Food Lovers</span>
+            <span class="tag">Friends Dining Together</span><span class="tag">Places to Eat Near Me</span>
+          </div>
+        </div>
+      </div>
+      <div class="reveal">
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:300;color:white;margin-bottom:1.5rem;">Delhi Specialties</h3>
+        <div class="dish-card" style="border-left-color:var(--gold-light);"><h4>Delhi Paratha</h4><p>Crispy layered flatbread served with traditional accompaniments.</p></div>
+        <div class="dish-card" style="border-left-color:var(--gold-light);"><h4>Chole Bhature</h4><p>Spiced chickpea curry paired with fluffy, deep-fried bread.</p></div>
+        <div class="dish-card" style="border-left-color:var(--gold-light);"><h4>Street Style Chaat</h4><p>Tangy, sweet, and spicy snack capturing the essence of Delhi streets.</p></div>
+        <div class="dish-card" style="border-left-color:var(--gold-light);"><h4>Tandoori Sizzlers</h4><p>Clay oven grilled specialties served hot and sizzling to your table.</p></div>
+        <div class="dish-card" style="border-left-color:var(--gold-light);"><h4>Tandoori Naan</h4><p>Freshly baked naan prepared in a traditional clay oven.</p></div>
+        <div style="margin-top:1.75rem;"><a href="#order" class="btn-gold" style="font-size:0.72rem;padding:0.75rem 1.75rem;">Order Delhi Food</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CUSTOM HOME FOOD -->
+<section id="custom">
+  <div class="container">
+    <div class="menu-layout">
+      <div class="reveal">
+        <span class="eyebrow">Custom Home Food</span>
+        <h2 class="serif-title">Food Made Just the <em>Way You Like It</em></h2>
+        <div class="gold-line"></div>
+        <p class="body-text">At Soul Flavorscape of India, we believe food should feel personal — just like meals prepared in a family kitchen. Our Custom Home Food experience allows guests to enjoy authentic Indian dishes prepared exactly the way they prefer. Unlike typical restaurant menus, our kitchen welcomes customization so every meal reflects your personal taste.</p>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;color:var(--gold-light);margin:2rem 0 0.5rem;">What Makes Our Custom Food Unique</h3>
+        <ul class="promise-list">
+          <li>Fresh ingredients every time</li><li>Traditional cooking techniques</li>
+          <li>Authentic family recipes</li><li>No frozen shortcuts</li><li>No artificial colors</li>
+        </ul>
+        <div style="margin-top:2rem;">
+          <div class="tags-wrap">
+            <span class="tag">Home-Style Indian Meals</span><span class="tag">Family Dining</span>
+            <span class="tag">Vegetarian &amp; Vegan</span><span class="tag">Dietary Restrictions</span>
+          </div>
+        </div>
+      </div>
+      <div class="reveal">
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:300;color:white;margin-bottom:1.5rem;">Customize Your Meal</h3>
+        <div class="customize-grid">
+          <div class="cust-option"><div class="cust-icon">🌶️</div><h4>Spice Level</h4><p>Mild to traditional Indian spice</p></div>
+          <div class="cust-option"><div class="cust-icon">🥗</div><h4>Ingredients</h4><p>Your preferences, honored</p></div>
+          <div class="cust-option"><div class="cust-icon">🌱</div><h4>Dietary Needs</h4><p>Vegetarian, vegan &amp; more</p></div>
+          <div class="cust-option"><div class="cust-icon">📖</div><h4>Family Recipes</h4><p>Authentic home-style cooking</p></div>
+        </div>
+        <div style="background:linear-gradient(135deg,rgba(201,168,76,0.12),rgba(42,122,110,0.12));border:1px solid rgba(201,168,76,0.25);padding:2rem;border-radius:4px;text-align:center;margin-top:1.5rem;">
+          <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.05rem;color:rgba(255,255,255,0.75);margin-bottom:1.25rem;">Ready for food made just for you?</p>
+          <a href="#order" class="btn-gold" style="font-size:0.72rem;padding:0.75rem 1.75rem;">Order Your Custom Meal</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ORDER ONLINE -->
+<section id="order">
+  <div class="container reveal">
+    <span class="eyebrow">Order Online</span>
+    <h2 class="serif-title" style="text-align:center;">Order Authentic Indian Food <em>Online</em></h2>
+    <div class="gold-line" style="margin:1.25rem auto 1.5rem;"></div>
+    <p class="body-text" style="text-align:center;max-width:540px;margin:0 auto;">Craving authentic Indian food? Order your favorite dishes from Soul Flavorscape and enjoy the real taste of India at home.</p>
+    <div class="order-options">
+      <div class="order-opt"><div class="order-opt-icon">🥡</div><p>Pickup</p></div>
+      <div class="order-opt"><div class="order-opt-icon">🚗</div><p>Delivery</p></div>
+      <div class="order-opt"><div class="order-opt-icon">🎉</div><p>Catering Orders</p></div>
+      <div class="order-opt"><div class="order-opt-icon">👨‍👩‍👧‍👦</div><p>Family Meals</p></div>
+    </div>
+    <p class="eyebrow" style="text-align:center;margin-bottom:0.6rem;">Secure Payment Options</p>
+    <div class="payment-row">
+      <span class="pay-badge">💳 Credit Card</span>
+      <span class="pay-badge">🍎 Apple Pay</span>
+      <span class="pay-badge">Google Pay</span>
+      <span class="pay-badge">Online Gateway</span>
+    </div>
+    <div style="text-align:center;">
+      <a href="tel:9199007231" class="btn-gold" style="font-size:0.82rem;padding:1rem 3rem;">Order Now — (919) 900-7231</a>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG -->
+<section id="blog">
+  <div class="container">
+    <div style="text-align:center;max-width:580px;margin:0 auto 3rem;" class="reveal">
+      <span class="eyebrow">From Our Blog</span>
+      <h2 class="serif-title">Stories, Flavors &amp; <em>Indian Food Culture</em></h2>
+    </div>
+    <div class="blog-grid reveal">
+      <div class="blog-card"><div class="blog-thumb">🏆</div><div class="blog-body"><span class="blog-cat">Raleigh · Dining</span><h4>Best Indian Food in Raleigh</h4><a href="#blog" class="blog-link">Read More →</a></div></div>
+      <div class="blog-card"><div class="blog-thumb">🌾</div><div class="blog-body"><span class="blog-cat">Culture · Punjab</span><h4>What Makes Punjabi Food So Unique</h4><a href="#blog" class="blog-link">Read More →</a></div></div>
+      <div class="blog-card"><div class="blog-thumb">🏙️</div><div class="blog-body"><span class="blog-cat">Street Food · Delhi</span><h4>Famous Street Foods of Delhi</h4><a href="#blog" class="blog-link">Read More →</a></div></div>
+      <div class="blog-card"><div class="blog-thumb">🍽️</div><div class="blog-body"><span class="blog-cat">Must Try · Dishes</span><h4>Top Indian Dishes You Must Try</h4><a href="#blog" class="blog-link">Read More →</a></div></div>
+      <div class="blog-card"><div class="blog-thumb">🌶️</div><div class="blog-body"><span class="blog-cat">Spices · Flavor</span><h4>How Indian Spices Transform Flavor</h4><a href="#blog" class="blog-link">Read More →</a></div></div>
+      <div class="blog-card"><div class="blog-thumb">✨</div><div class="blog-body"><span class="blog-cat">Authenticity · Cooking</span><h4>Why Authentic Indian Food Tastes Different</h4><a href="#blog" class="blog-link">Read More →</a></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="gold-rule reveal"><span>Visit Soul Flavorscape of India</span></div>
+    <div class="contact-layout">
+      <div class="reveal">
+        <div class="contact-row">
+          <div class="contact-icon-wrap">📍</div>
+          <div><p class="contact-label">Address</p><p class="contact-val">301 Glenwood Ave #190<br/>Raleigh, NC</p></div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-icon-wrap">📞</div>
+          <div><p class="contact-label">Phone</p><p class="contact-val"><a href="tel:9199007231">(919) 900-7231</a></p></div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-icon-wrap">🌐</div>
+          <div><p class="contact-label">Website</p><p class="contact-val"><a href="http://www.soulflavorscapeofindia.com" target="_blank" rel="noopener">www.soulflavorscapeofindia.com</a></p></div>
+        </div>
+        <a href="#order" class="btn-gold" style="display:inline-block;margin-top:0.5rem;font-size:0.75rem;padding:0.8rem 2rem;">Order Online Now</a>
+      </div>
+      <div class="reveal">
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:300;color:white;margin-bottom:1.5rem;">Opening Hours</h3>
+        <div class="hours-grid">
+          <div class="hour-card"><div class="hour-card-icon">☀️</div><h4>Lunch</h4><p>Available daily</p></div>
+          <div class="hour-card"><div class="hour-card-icon">🌙</div><h4>Dinner</h4><p>Evening service, dine in &amp; takeout</p></div>
+          <div class="hour-card"><div class="hour-card-icon">⭐</div><h4>Weekend Specials</h4><p>Exclusive dishes every weekend</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Soul</div>
+  <div class="footer-sub">Flavorscape of India</div>
+  <div class="footer-links">
+    <a href="#home">Home</a><a href="#punjab">Taste of Punjab</a><a href="#delhi">Taste of Delhi</a>
+    <a href="#custom">Home Food</a><a href="#story">About Us</a><a href="#blog">Blog</a>
+    <a href="#order">Order Online</a><a href="#contact">Contact</a>
+  </div>
+  <p>301 Glenwood Ave #190, Raleigh, NC &nbsp;·&nbsp; (919) 900-7231 &nbsp;·&nbsp; soulflavorscapeofindia.com</p>
+  <p style="margin-top:0.5rem;">Authentic Indian Restaurant · Punjabi &amp; Delhi-style Cuisine · Fresh Ingredients Daily · No Artificial Colors</p>
+</footer>
+
+<script>
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60);
+  });
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => io.observe(el));
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a:not(.nav-order-btn)');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) current = s.id; });
+    navLinks.forEach(a => { a.classList.remove('active'); if (a.getAttribute('href') === '#' + current) a.classList.add('active'); });
+  });
+</script>
+</body>
+</html>
